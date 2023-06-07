@@ -17,49 +17,25 @@ const Carousel = () => {
         pagination={{
           clickable: true,
         }}
-        className="mySwiper h-[80vh]"
+        className="mySwiper h-[50vh] md:h-[80vh]"
         autoplay={{ delay: 5000 }}
       >
         <SwiperSlide>
           <div className="flex justify-between">
-            <div className="w-1/2 p-10">
+            <div className="md:w-1/2 p-5 md:p-10 h-[50vh] md:h-[80vh] flex flex-col justify-center">
               <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
-              <h2 className="text-8xl font-bold w-56">
+              <h2 className="text-6xl md:text-8xl font-bold w-56">
                 MUSIC EDUCATION SCHOOL
               </h2>
               <p className="text-2xl font-medium">IN THE WORLD</p>
             </div>
-            <img src={Carousel1} alt="" className="w-1/2 h-[80vh]" />
+            <img src={Carousel1} alt="" className="w-1/2 h-[80vh] hidden md:block" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
         <div className="flex justify-between">
-          <img src={Carousel2} alt="" className="w-1/2 h-[80vh]" />
-            <div className="w-1/2 p-10">
-              <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
-              <h2 className="text-8xl font-bold w-56">
-                MUSIC EDUCATION SCHOOL
-              </h2>
-              <p className="text-2xl font-medium">IN THE WORLD</p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className="flex justify-between">
-            <div className="w-1/2 p-10">
-              <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
-              <h2 className="text-8xl font-bold w-56">
-                MUSIC EDUCATION SCHOOL
-              </h2>
-              <p className="text-2xl font-medium">IN THE WORLD</p>
-            </div>
-            <img src={Carousel3} alt="" className="w-1/2 h-[80vh]" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className="flex justify-between">
-          <img src={Carousel4} alt="" className="w-1/2 h-[80vh]" />
-            <div className="w-1/2 p-10">
+          <img src={Carousel2} alt="" className="w-full md:w-1/2 h-[50vh] md:h-[80vh]" />
+            <div className="w-1/2 p-10 hidden md:block">
               <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
               <h2 className="text-8xl font-bold w-56">
                 MUSIC EDUCATION SCHOOL
@@ -70,14 +46,38 @@ const Carousel = () => {
         </SwiperSlide>
         <SwiperSlide>
         <div className="flex justify-between">
-            <div className="w-1/2 p-10">
+            <div className="md:w-1/2 p-5 md:p-10 h-[50vh] md:h-[80vh] flex flex-col justify-center">
+              <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
+              <h2 className="text-6xl md:text-8xl font-bold w-56">
+                MUSIC EDUCATION SCHOOL
+              </h2>
+              <p className="text-2xl font-medium">IN THE WORLD</p>
+            </div>
+            <img src={Carousel3} alt="" className="w-1/2 h-[80vh] hidden md:block" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="flex justify-between">
+          <img src={Carousel4} alt="" className="w-full md:w-1/2 h-[50vh] md:h-[80vh]" />
+            <div className="w-1/2 p-10 hidden md:block">
               <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
               <h2 className="text-8xl font-bold w-56">
                 MUSIC EDUCATION SCHOOL
               </h2>
               <p className="text-2xl font-medium">IN THE WORLD</p>
             </div>
-            <img src={Carousel5} alt="" className="w-1/2 h-[80vh]" />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+        <div className="flex justify-between">
+            <div className="md:w-1/2 p-5 md:p-10 h-[50vh] md:h-[80vh] flex flex-col justify-center">
+              <h2 className="text-2xl font-medium">THE MOST REVOLUTIONARY</h2>
+              <h2 className="text-6xl md:text-8xl font-bold w-56">
+                MUSIC EDUCATION SCHOOL
+              </h2>
+              <p className="text-2xl font-medium">IN THE WORLD</p>
+            </div>
+            <img src={Carousel5} alt="" className="w-1/2 h-[80vh] hidden md:block" />
           </div>
         </SwiperSlide>
       </Swiper>

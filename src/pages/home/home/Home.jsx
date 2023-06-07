@@ -1,5 +1,6 @@
 import Abilities from "../abilities/Abilities";
 import Carousel from "../carousel/Carousel";
+import Review from "../review/Review";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Carousel></Carousel>
             <Abilities></Abilities>
+            <Review></Review>
         </div>
     );
 };
