@@ -54,7 +54,7 @@ const Login = () => {
             <div className="w-[80%] text-end py-5">
               <p>
                 New here?{" "}
-                <Link className="underline hover:text-[#03203C] text-[#007dfe]">
+                <Link to={"/register"} className="underline hover:text-[#03203C] text-[#007dfe]">
                   Create a New Account
                 </Link>
               </p>
