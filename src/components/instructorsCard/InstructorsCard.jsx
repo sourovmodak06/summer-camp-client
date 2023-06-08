@@ -25,7 +25,7 @@ const InstructorsCard = ({ item }) => {
                 {email}
               </h2>
             </Slide>
-            <button className="bg-[#03203C] text-white py-1 rounded-lg w-full mt-2 md:mt-5">See Classes</button>
+            <button className="bg-[#03203C] text-white py-1 rounded-lg w-[40vw] md:w-[10vw] mt-2 md:mt-5">See Classes</button>
           </div>
         </div>
       </div>

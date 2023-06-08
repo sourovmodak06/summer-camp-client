@@ -5,8 +5,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const { createUser, profileUpdate } = useAuth();
 
   const {
@@ -44,7 +46,7 @@ const Register = () => {
   };
   return (
     <div>
-      <ToastContainer  theme="colored" />
+      <ToastContainer theme="colored" />
       <div className="flex flex-col-reverse md:flex-row gap-5 pb-20">
         <img src={signUpImg} alt="signUpImg" className="md:w-1/2" />
         <div className="w-full">

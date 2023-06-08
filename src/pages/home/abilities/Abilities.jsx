@@ -5,14 +5,13 @@ import {
 import img1 from "../../../assets/Abilities1.jpg";
 import img2 from "../../../assets/Abilities2.jpg";
 import img3 from "../../../assets/Abilities3.jpg";
+import SectionTitle from "../../../components/sectionTitle/SectionTitle";
 
 const Abilities = () => {
   return (
     <div className="mb-10 overflow-hidden">
       <div className="flex flex-col items-center py-5">
-        <span className="text-3xl md:text-7xl font-extrabold tracking-[0.5rem] uppercase textEffect bg-[#03203C] p-5">
-          performance is the key
-        </span>
+        <SectionTitle heading={"performance is the key"}></SectionTitle>
         <Rotate delay={1e3} cascade damping={1e-1}>
           <h3 className="text-2xl font-bold">
             TO AMPLIFYING YOUR MUSICAL ABILITIES

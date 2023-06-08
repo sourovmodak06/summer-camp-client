@@ -1,3 +1,4 @@
+import useTitle from "../../../hooks/useTitle";
 import Abilities from "../abilities/Abilities";
 import Carousel from "../carousel/Carousel";
 import PopularClasses from "../popularClasses/PopularClasses";
@@ -6,6 +7,7 @@ import Review from "../review/Review";
 
 
 const Home = () => {
+    useTitle("Home");
     return (
         <div>
             <Carousel></Carousel>

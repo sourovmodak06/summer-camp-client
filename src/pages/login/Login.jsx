@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../hooks/useAuth";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { signIn, googleCreateUser, githubCreateUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
