@@ -1,21 +1,32 @@
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import loginImg from "../../assets/login.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+  const {signIn} = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const {
     register,
     handleSubmit,
+    reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    if (data) {
-      toast("Sign In Successfully✅")
-    }
+    signIn(data.email, data.password)
+    .then(() => {
+      toast.success("Successfully Login by Email");
+      reset();
+      navigate(from, {replace: true})
+    })
+    .catch(error => {
+      toast.error(error.message);
+    })
   };
 
   const [show, setShow] = useState(false);
