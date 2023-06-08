@@ -31,7 +31,7 @@ const Navbar = () => {
   );
   const [open, setOpen] = useState(false);
   return (
-    <div className="mb-16">
+    <div className="mb-20">
       <div className="shadow-md bg-[#03203C] w-full fixed top-0 left-0 z-50">
         <div className="md:flex items-center justify-between  py-4 md:px-10 px-7">
           <div className="cursor-pointer flex items-center">
