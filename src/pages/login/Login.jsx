@@ -8,25 +8,42 @@ import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const {signIn} = useAuth();
+  const { signIn, googleCreateUser, githubCreateUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm();
+  const from = location.state?.from?.pathname || "/";
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     signIn(data.email, data.password)
-    .then(() => {
-      toast.success("Successfully Login by Email");
-      reset();
-      navigate(from, {replace: true})
-    })
-    .catch(error => {
-      toast.error(error.message);
-    })
+      .then(() => {
+        toast.success("Successfully Login by Email");
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleCreateUser()
+      .then(() => {
+        toast.success("Successfully Login by Google");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+  const handleGithubSignIn = () => {
+    githubCreateUser()
+      .then(() => {
+        toast.success("Successfully Login by Github");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   const [show, setShow] = useState(false);
@@ -102,13 +119,19 @@ const Login = () => {
                 <h2 className="text-center uppercase">Or</h2>
                 <div className="bg-[#007dfe] h-[1px] w-[60%] m-auto"></div>
                 <div className="flex gap-2 flex-col md:flex-row mt-5 md:mt-10 md:w-[80%]">
-                  <div className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] ">
+                  <div
+                    onClick={handleGoogleSignIn}
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] "
+                  >
                     <FaGoogle className="text-2xl"></FaGoogle>
                     <h2 className="text-xl font-light uppercase">
                       Sign in with Google
                     </h2>
                   </div>
-                  <div className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe]">
+                  <div
+                    onClick={handleGithubSignIn}
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe]"
+                  >
                     <FaGithub className="text-2xl"></FaGithub>
                     <h2 className="text-xl font-light uppercase">
                       Sign in with Github
