@@ -2,8 +2,19 @@ import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import signUpImg from "../../assets/signUp.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
@@ -19,7 +30,7 @@ const Register = () => {
         <h2 className="text-3xl text-center py-10 uppercase font-semibold">
           Sign up
         </h2>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="pl-20 md:pl-0">
             <div className="py-3">
               <p className="text-2xl">
@@ -27,10 +38,15 @@ const Register = () => {
               </p>
               <input
                 type="text"
+                {...register("name", {
+                  required: true,
+                })}
                 placeholder="Enter your name"
                 className="border-2 border-[#03203C] rounded-xl py-1 px-5 w-[80%]"
-                required
               />
+              {errors.name?.type === "required" && (
+                <p className="text-[#D31A50]">Name is required</p>
+              )}
             </div>
             <div>
               <p className="text-2xl">
@@ -38,10 +54,15 @@ const Register = () => {
               </p>
               <input
                 type="email"
+                {...register("email", {
+                  required: true,
+                })}
                 placeholder="Enter your email"
                 className="border-2 border-[#03203C] rounded-xl py-1 px-5 w-[80%]"
-                required
               />
+              {errors.email?.type === "required" && (
+                <p className="text-[#D31A50]">Email is required</p>
+              )}
             </div>
             <div className="py-3">
               <p className="text-2xl">
@@ -50,10 +71,21 @@ const Register = () => {
               <div className="relative">
                 <input
                   type={show ? "text" : "password"}
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                  })}
                   placeholder="Enter your password"
                   className="border-2 border-[#03203C] rounded-xl py-1 pl-5 pr-10 w-[80%]"
-                  required
                 />
+                {errors.password?.type === "required" && (
+                  <p className="text-[#D31A50]">Password is required</p>
+                )}
+                {errors.password?.type === 'minLength' && <p className="text-red-600">Password  is less than 6 characters</p>}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-[#D31A50]">do not have a capital letter and do not have a special character</p>
+                )}
                 <p
                   onClick={handleShow}
                   className="absolute top-[10px] right-20   md:right-36"
@@ -66,17 +98,28 @@ const Register = () => {
                 </p>
               </div>
             </div>
-            <div >
+            <div>
               <p className="text-2xl">
                 Confirm Password<span className="text-[#D31A50]">*</span>
               </p>
               <div className="relative">
                 <input
                   type={showCP ? "text" : "password"}
+                  {...register("CPassword", {
+                    required: true,
+                    validate: (value) => {
+                      if (watch('password') != value) {
+                        return "Your passwords do no match";
+                      }
+                    }
+                  })}
                   placeholder="Enter your confirm password"
                   className="border-2 border-[#03203C] rounded-xl py-1 pl-5 pr-10 w-[80%]"
-                  required
                 />
+                {errors.CPassword?.type === "required" && (
+                  <p className="text-[#D31A50]">Confirm Password is required</p>
+                )}
+                <p className="text-[#D31A50]">{errors.CPassword?.message}</p>
                 <p
                   onClick={handleShowCP}
                   className="absolute top-[10px] right-20   md:right-36"
@@ -95,47 +138,34 @@ const Register = () => {
               </p>
               <input
                 type="url"
+                {...register("url", {
+                  required: true,
+                })}
                 placeholder="Enter your Photo URL"
                 className="border-2 border-[#03203C] rounded-xl py-1 px-5 w-[80%]"
-                required
               />
+              {errors.url?.type === "required" && (
+                <p className="text-[#D31A50]">Photo URL is required</p>
+              )}
             </div>
             <div>
-              <p className="text-2xl">Gender</p>
-              <div className="flex gap-5">
-                <div>
-                  <input type="radio" id="male" name="gender" value="male" />
-                  <label htmlFor="male" className="ml-2">
-                    Male
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    value="female"
-                  />
-                  <label htmlFor="female" className="ml-2">
-                    Female
-                  </label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    id="notSay"
-                    name="gender"
-                    value="notSay"
-                  />
-                  <label htmlFor="notSay" className="ml-2">
-                    I prefer not to say
-                  </label>
-                </div>
-              </div>
+              <label htmlFor="gender" className="text-2xl">
+                Gender :{" "}
+              </label>
+              <select {...register("gender")} className="border-2 border-[#03203C] w-36 md:w-[65%] rounded-xl py-1">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
             </div>
             <div className="py-3">
-                <p className="text-2xl">Phone Number</p>
-                <input type="number" placeholder="Enter your number" className="border-2 border-[#03203C] rounded-xl py-1 px-5 w-[80%]" />
+              <p className="text-2xl">Phone Number</p>
+              <input
+                type="number"
+                {...register("number")}
+                placeholder="Enter your number"
+                className="border-2 border-[#03203C] rounded-xl py-1 px-5 w-[80%]"
+              />
             </div>
             <input
               type="submit"
