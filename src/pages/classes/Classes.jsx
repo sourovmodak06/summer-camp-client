@@ -3,8 +3,11 @@ import ClassCard from "../../components/classCard/ClassCard";
 import axios from "../../hooks/useAxios";
 import useTitle from "../../hooks/useTitle";
 import SectionTitle from "../../components/sectionTitle/SectionTitle";
+import { Typewriter } from 'react-simple-typewriter';
+import useAuth from "../../hooks/useAuth";
 
 const Classes = () => {
+  const { user } = useAuth();
   useTitle("Classes");
   const [classes, setClasses] = useState([]);
   const classesData = async () => {
@@ -17,6 +20,22 @@ const Classes = () => {
   return (
     <div className="dark:bg-[#0D0D0D]">
       <SectionTitle heading={"Classes"}></SectionTitle>
+      {!user && (
+        <p className="text-[#D31A50] font-bold text-2xl text-center">
+          Before Enrolling{" "}
+          <span style={{  fontWeight: "bold" }}>
+            <Typewriter
+              words={["Login", "Register", "Social Login"]}
+              loop={10}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </span>
+        </p>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-5 md:mx-10 overflow-hidden py-10">
         {classes.map((item) => (
           <ClassCard key={item._id} item={item}></ClassCard>

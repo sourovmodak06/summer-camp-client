@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { MdNotifications } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import ActiveLink from "../../components/activeLink/ActiveLink";
 import useAuth from "../../hooks/useAuth";
@@ -53,8 +54,9 @@ const Navbar = () => {
         <ActiveLink to={"/classes"}>Classes</ActiveLink>
       </li>
       {user && (
-        <li>
+        <li className="flex items-center gap-2">
           <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
+          <MdNotifications></MdNotifications>
         </li>
       )}
     </>
