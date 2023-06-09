@@ -16,8 +16,8 @@ const Review = () => {
     reviewData();
   }, []);
   return (
-    <div className="bg-[#03203c1c] py-5 md:py-10">
-      <h2 className="text-[#03203C] font-semibold text-3xl uppercase text-center">
+    <div className="bg-[#03203c1c] py-5 md:py-10 dark:bg-[#0D0D0D]">
+      <h2 className="text-[#03203C] dark:text-white font-semibold text-3xl uppercase text-center">
         review
       </h2>
       <Swiper
@@ -37,10 +37,10 @@ const Review = () => {
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
             <div className="text-center w-9/12 m-auto my-10">
-              <h2 className="text-2xl font-semibold uppercase pb-5">
+              <h2 className="text-2xl font-semibold uppercase pb-5 dark:text-white">
                 {review.title}
               </h2>
-              <p>{review.details}</p>
+              <p className="dark:text-white">{review.details}</p>
               <p className="my-5 text-gray-500">{review.author}</p>
             </div>
           </SwiperSlide>

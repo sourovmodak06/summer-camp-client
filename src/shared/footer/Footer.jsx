@@ -6,7 +6,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <div className="mt-auto">
-      <div className="w-full bg-[#03203C] text-white md:py-5 md:px-10 px-7 pt-20">
+      <div className="w-full bg-[#03203C] dark:bg-[#0D0D0D] text-white md:py-5 md:px-10 px-7 pt-20">
         <div className="flex flex-col md:flex-row justify-between mb-5">
           <Link to="/">
             <img src={logo} alt="logo" className="" />

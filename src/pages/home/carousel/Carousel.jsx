@@ -17,7 +17,7 @@ const Carousel = () => {
         pagination={{
           clickable: true,
         }}
-        className="mySwiper h-[50vh] md:h-[80vh]"
+        className="mySwiper h-[50vh] md:h-[80vh] dark:bg-[#0D0D0D] dark:text-white text-black"
         autoplay={{ delay: 5000 }}
       >
         <SwiperSlide>

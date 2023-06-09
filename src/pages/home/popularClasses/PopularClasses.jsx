@@ -13,7 +13,7 @@ const PopularClasses = () => {
     classesData();
   }, []);
   return (
-    <div>
+    <div className="dark:bg-[#0D0D0D]">
       <SectionTitle heading={"Popular Classes"}></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-5 md:mx-10 overflow-hidden py-10">
         {classes.slice(0,6).map((item) => (

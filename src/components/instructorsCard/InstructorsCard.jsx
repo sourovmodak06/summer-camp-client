@@ -5,7 +5,7 @@ const InstructorsCard = ({ item }) => {
   const { image, name, classesName, classes, email } = item;
   return (
     <div>
-      <div className="rounded-3xl bg-[#03203c17]">
+      <div className="rounded-3xl bg-[#03203c17] border-2">
         <div className="flex items-center">
           <img
             src={image}
@@ -14,18 +14,18 @@ const InstructorsCard = ({ item }) => {
           />
           <div>
             <Slide>
-              <h2 className="text-xl">{classesName}</h2>
+              <h2 className="text-xl dark:text-white">{classesName}</h2>
               <h2 className="text-gray-500 font-semibold">{name}</h2>
-              <h2 className="flex items-center gap-2 text-xl">
-                <FaUserPlus className="text-[#D31A50]"></FaUserPlus>
+              <h2 className="flex items-center gap-2 text-xl dark:text-white">
+                <FaUserPlus className="text-[#D31A50] dark:text-white"></FaUserPlus>
                 {classes}
               </h2>
-              <h2 className="flex items-center gap-2">
-                <FaAt className="text-[#D31A50] text-xl"></FaAt>
+              <h2 className="flex items-center gap-2 dark:text-white">
+                <FaAt className="text-[#D31A50] text-xl dark:text-white"></FaAt>
                 {email}
               </h2>
             </Slide>
-            <button className="bg-[#03203C] text-white py-1 rounded-lg w-[40vw] md:w-[10vw] mt-2 md:mt-5">See Classes</button>
+            <button className="bg-[#03203C] text-white py-1 rounded-lg w-[40vw] md:w-[10vw] mt-2 md:mt-5 border-2 dark:bg-transparent">See Classes</button>
           </div>
         </div>
       </div>

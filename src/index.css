@@ -12,3 +12,13 @@
   -webkit-text-stroke-color: white;
   -webkit-text-fill-color: transparent;
 }
+
+/* Custom Scrollbar Start*/
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #FF4331);
+  border-radius: 6px;
+}
+/* Custom Scrollbar End*/

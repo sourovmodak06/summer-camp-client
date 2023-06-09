@@ -10,7 +10,7 @@ const ClassCard = ({ item }) => {
     enrolledStudent,
   } = item;
   return (
-    <div className="bg-white md:shadow-2xl md:drop-shadow-2xl h-[80vh] md:h-[90vh] border-4 md:border-none border-[#03203C]">
+    <div className="bg-white dark:bg-[#0D0D0D] md:shadow-2xl md:drop-shadow-2xl h-[80vh] md:h-[90vh] border-4 md:border-2 border-[#03203C] dark:border-white">
       <div>
         <img src={image} alt="" className="w-screen h-[50vh] p-2 md:p-0" />
         <div className="flex gap-3 m-1">
@@ -20,7 +20,7 @@ const ClassCard = ({ item }) => {
             </h2>
           </Slide>
           <Zoom>
-            <h2 className="text-xl font-bold">{name}</h2>
+            <h2 className="text-xl font-bold dark:text-white">{name}</h2>
           </Zoom>
         </div>
         <div className="flex gap-3 m-1">
@@ -30,7 +30,7 @@ const ClassCard = ({ item }) => {
             </h2>
           </Zoom>
           <Slide>
-            <h2 className="text-xl font-bold">{instructorName}</h2>
+            <h2 className="text-xl font-bold dark:text-white">{instructorName}</h2>
           </Slide>
         </div>
         <div className="flex gap-3 m-1">
@@ -40,7 +40,7 @@ const ClassCard = ({ item }) => {
             </h2>
           </Slide>
           <Zoom>
-            <h2 className="text-xl font-bold">{availableSeats}</h2>
+            <h2 className="text-xl font-bold dark:text-white">{availableSeats}</h2>
           </Zoom>
         </div>
         <div className="flex gap-3 m-1">
@@ -50,7 +50,7 @@ const ClassCard = ({ item }) => {
             </h2>
           </Zoom>
           <Slide>
-            <h2 className="text-xl font-bold">${price} <span className="text-gray-500">/month</span></h2>
+            <h2 className="text-xl font-bold dark:text-white">${price} <span className="text-gray-500 dark:text-white">/month</span></h2>
           </Slide>
         </div>
         <div className="flex gap-3 m-1">
@@ -60,10 +60,10 @@ const ClassCard = ({ item }) => {
             </h2>
           </Slide>
           <Zoom>
-            <h2 className="text-xl font-bold">{enrolledStudent}</h2>
+            <h2 className="text-xl font-bold dark:text-white">{enrolledStudent}</h2>
           </Zoom>
         </div>
-        <button className="bg-[#03203C] w-3/4 m-auto block mt-5 p-1 text-white text-2xl">Enrolled Now</button>
+        <button className="bg-[#03203C] dark:bg-transparent border-2 w-3/4 m-auto block mt-5 p-1 text-white text-2xl">Enrolled Now</button>
       </div>
     </div>
   );

@@ -1,10 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 import ActiveLink from "../../components/activeLink/ActiveLink";
 import useAuth from "../../hooks/useAuth";
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === null) {
+      localStorage.setItem("theme", "light");
+    }
+  }, []);
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (localStorage.getItem("theme") === "dark") {
+      html.classList.add("dark");
+      setTheme("dark");
+    } else {
+      html.classList.remove("dark");
+      setTheme("light");
+    }
+  }, [theme]);
+
+  const handleThemeSwitch = () => {
+    if (localStorage.getItem("theme") === "light") {
+      setTheme("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      setTheme("light");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   const { user, logOut } = useAuth();
   const handleLogout = () => {
     logOut()
@@ -22,17 +52,17 @@ const Navbar = () => {
       <li>
         <ActiveLink to={"/classes"}>Classes</ActiveLink>
       </li>
-      {
-        user && <li>
-        <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
-      </li>
-      }
+      {user && (
+        <li>
+          <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
+        </li>
+      )}
     </>
   );
   const [open, setOpen] = useState(false);
   return (
-    <div className="mb-20">
-      <div className="shadow-md bg-[#03203C] w-full fixed top-0 left-0 z-50">
+    <div className="mb-10 md:mb-20">
+      <div className="shadow-md bg-[#03203C] dark:bg-[#0D0D0D] w-full fixed top-0 left-0 z-50">
         <div className="md:flex items-center justify-between  py-4 md:px-10 px-7">
           <div className="cursor-pointer flex items-center">
             <img src={logo} alt="logo" />
@@ -46,7 +76,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`flex flex-col md:flex-row gap-5 md:items-center md:py-0 py-8 text-white absolute md:static bg-[#03203C] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-150 ease-in ${
+            className={`flex flex-col md:flex-row gap-5 md:items-center md:py-0 py-8 text-white absolute md:static bg-[#03203C] dark:bg-[#0D0D0D] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-150 md:duration-0 ease-in ${
               open ? "top-14 " : "top-[-500px]"
             }`}
           >
@@ -74,6 +104,12 @@ const Navbar = () => {
                 </>
               )}
             </div>
+            <button
+              onClick={handleThemeSwitch}
+              className=" text-white rounded-full w-12 h-12 border-2 flex justify-center items-center"
+            >
+              {theme === "light" ? <BsMoonFill /> : <BsFillSunFill />}
+            </button>
           </ul>
         </div>
       </div>

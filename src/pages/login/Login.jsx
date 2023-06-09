@@ -54,18 +54,18 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="dark:bg-[#0D0D0D]">
       <ToastContainer />
       <div className="flex flex-col-reverse md:flex-row gap-5">
         <img src={loginImg} alt="loginImg" className="md:w-1/2" />
         <div className="w-full">
-          <h2 className="text-3xl text-center py-10 uppercase font-semibold">
+          <h2 className="text-3xl text-center py-10 uppercase font-semibold dark:text-white">
             Sign in
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="pl-20 md:pl-0">
               <div>
-                <p className="text-2xl">
+                <p className="text-2xl dark:text-white">
                   Email<span className="text-[#D31A50]">*</span>
                 </p>
                 <input
@@ -77,7 +77,7 @@ const Login = () => {
                 />
               </div>
               <div className="py-5">
-                <p className="text-2xl">
+                <p className="text-2xl dark:text-white">
                   Password<span className="text-[#D31A50]">*</span>
                 </p>
                 <div className="relative">
@@ -103,10 +103,10 @@ const Login = () => {
               <input
                 type="submit"
                 value="Sign In"
-                className="bg-[#03203C] text-white w-[80%] md:w-[60%] md:m-auto md:block cursor-pointer hover:bg-white border-2 border-[#03203C] hover:text-[#03203C] py-2 rounded-2xl"
+                className="bg-[#03203C] dark:bg-transparent text-white w-[80%] md:w-[60%] md:m-auto md:block cursor-pointer hover:bg-white border-2 border-[#03203C] dark:border-white hover:text-[#03203C] dark:hover:text-white py-2 rounded-2xl"
               />
               <div className="w-[80%] text-end py-5">
-                <p>
+                <p className="dark:text-white">
                   New here?{" "}
                   <Link
                     to={"/register"}
@@ -118,12 +118,12 @@ const Login = () => {
               </div>
               <div>
                 <div className="bg-[#007dfe] h-[1px] w-[60%] m-auto"></div>
-                <h2 className="text-center uppercase">Or</h2>
+                <h2 className="text-center uppercase dark:text-white">Or</h2>
                 <div className="bg-[#007dfe] h-[1px] w-[60%] m-auto"></div>
                 <div className="flex gap-2 flex-col md:flex-row mt-5 md:mt-10 md:w-[80%]">
                   <div
                     onClick={handleGoogleSignIn}
-                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] "
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] border-2 dark:bg-transparent"
                   >
                     <FaGoogle className="text-2xl"></FaGoogle>
                     <h2 className="text-xl font-light uppercase">
@@ -132,7 +132,7 @@ const Login = () => {
                   </div>
                   <div
                     onClick={handleGithubSignIn}
-                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[80%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe]"
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] border-2 dark:bg-transparent"
                   >
                     <FaGithub className="text-2xl"></FaGithub>
                     <h2 className="text-xl font-light uppercase">
