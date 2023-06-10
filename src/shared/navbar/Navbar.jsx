@@ -58,7 +58,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li className="flex items-center gap-2">
-          <ActiveLink to={"/dashboard/studentHome"}>Dashboard</ActiveLink>
+          <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
           <p className="relative">
           <MdNotifications></MdNotifications>
           <span className="absolute font-bold text-[#D31A50] -top-3 -right-1">{classItems?.length || 0}</span>

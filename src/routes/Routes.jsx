@@ -10,6 +10,7 @@ import Dashboard from "../layout/Dashboard";
 import StudentClasses from "../pages/dashboard/studentClasses/StudentClasses";
 import StudentHome from "../pages/dashboard/studentHome/studentHome";
 import PrivateRoute from "./PrivateRoute";
+import Payments from "../pages/dashboard/payments/Payments";
 
   const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ import PrivateRoute from "./PrivateRoute";
         {
           path: "studentClasses",
           element: <PrivateRoute><StudentClasses></StudentClasses></PrivateRoute>
+        },
+        {
+          path: "payments",
+          element: <PrivateRoute><Payments></Payments></PrivateRoute>
         }
       ]
     }
