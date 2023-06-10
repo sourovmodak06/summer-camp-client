@@ -5,6 +5,7 @@ import logo from "../../assets/logo.png";
 import ActiveLink from "../../components/activeLink/ActiveLink";
 import useAuth from "../../hooks/useAuth";
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
+import useClasses from "../../hooks/useClasses";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
@@ -42,6 +43,8 @@ const Navbar = () => {
       .then()
       .catch((error) => console.log(error));
   };
+
+  const [classItems] = useClasses()
   const navItems = (
     <>
       <li>
@@ -56,7 +59,10 @@ const Navbar = () => {
       {user && (
         <li className="flex items-center gap-2">
           <ActiveLink to={"/dashboard"}>Dashboard</ActiveLink>
+          <p className="relative">
           <MdNotifications></MdNotifications>
+          <span className="absolute font-bold text-[#D31A50] -top-3 -right-1">{classItems?.length || 0}</span>
+          </p>
         </li>
       )}
     </>

@@ -1,9 +1,13 @@
 import { Slide, Zoom } from "react-awesome-reveal";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import useClasses from "../../hooks/useClasses";
 
 const ClassCard = ({ item }) => {
+  const [, refetch] = useClasses();
   const { user } = useAuth();
   const {
+    _id,
     image,
     name,
     instructorName,
@@ -11,6 +15,35 @@ const ClassCard = ({ item }) => {
     price,
     enrolledStudent,
   } = item;
+  const handleAddClass = (item) => {
+    console.log(item);
+    if (user && user.email) {
+      const classItem = {
+        classItemId: _id,
+        image,
+        name,
+        instructorName,
+        availableSeats,
+        price,
+        enrolledStudent,
+        email: user.email
+      }
+      fetch("https://school-of-rock-server.vercel.app/classCart",{
+        method: "POST",
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(classItem)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          toast.success("Cart Added");
+          refetch();
+        }
+      })
+    }
+  }
   return (
     <>
       <div className="bg-white dark:bg-[#0D0D0D] md:shadow-2xl md:drop-shadow-2xl h-[80vh] md:h-[90vh] border-4 md:border-2 border-[#03203C] dark:border-white">
@@ -76,7 +109,7 @@ const ClassCard = ({ item }) => {
             </Zoom>
           </div>
           {user ? (
-            <button className="bg-[#03203C] dark:bg-transparent border-2 w-3/4 m-auto block mt-5 p-1 text-white text-2xl">
+            <button onClick={() => handleAddClass(item)} className="bg-[#03203C] dark:bg-transparent border-2 w-3/4 m-auto block mt-5 p-1 text-white text-2xl">
               Enrolled Now
             </button>
           ) : (

@@ -5,6 +5,7 @@ import useTitle from "../../hooks/useTitle";
 import SectionTitle from "../../components/sectionTitle/SectionTitle";
 import { Typewriter } from 'react-simple-typewriter';
 import useAuth from "../../hooks/useAuth";
+import { ToastContainer } from "react-toastify";
 
 const Classes = () => {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ const Classes = () => {
   }, []);
   return (
     <div className="dark:bg-[#0D0D0D]">
+      <ToastContainer theme="colored" />
       <SectionTitle heading={"Classes"}></SectionTitle>
       {!user && (
         <p className="text-[#D31A50] font-bold text-2xl text-center">
