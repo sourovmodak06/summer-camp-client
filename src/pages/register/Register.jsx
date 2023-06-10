@@ -1,6 +1,6 @@
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import signUpImg from "../../assets/signUp.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
@@ -9,8 +9,9 @@ import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   useTitle("Register");
-  const { createUser, profileUpdate } = useAuth();
-
+  const { createUser, profileUpdate, googleCreateUser, githubCreateUser } =
+    useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,22 +21,70 @@ const Register = () => {
   } = useForm();
   const onSubmit = (data) => {
     createUser(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
+      .then(() => {
         profileUpdate(data.name, data.url)
-          .then()
+          .then(() => {
+            const saveUser = { name: data.name, email: data.email };
+            fetch("https://school-of-rock-server.vercel.app/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  toast.success("Successfully Register");
+                  navigate("/");
+                }
+              });
+          })
           .catch((error) => {
             toast.error(error.message);
           });
-        toast.success("Successfully Register");
-        reset();
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
-
+  const handleGoogleSignUp = () => {
+    googleCreateUser()
+      .then((result) => {
+        const loggedUser = result.user;
+        const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+        fetch("https://school-of-rock-server.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              toast.success("Successfully Register");
+              navigate("/");
+            }
+          });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+  const handleGithubSignUp = () => {
+    githubCreateUser()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success("Successfully Login by Github");
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
@@ -224,13 +273,19 @@ const Register = () => {
                 <h2 className="text-center uppercase dark:text-white">Or</h2>
                 <div className="bg-[#007dfe] h-[1px] w-[60%] m-auto"></div>
                 <div className="flex gap-2 flex-col md:flex-row mt-5 md:mt-10 md:w-[80%]">
-                  <div className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] dark:bg-transparent border-2">
+                  <div
+                    onClick={handleGoogleSignUp}
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] dark:bg-transparent border-2"
+                  >
                     <FaGoogle className="text-2xl"></FaGoogle>
                     <h2 className="text-xl font-light uppercase">
                       Sign up with Google
                     </h2>
                   </div>
-                  <div className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] dark:bg-transparent border-2">
+                  <div
+                    onClick={handleGithubSignUp}
+                    className="flex items-center gap-2 justify-center bg-[#03203C] w-[85%] md:w-1/2 text-white rounded-2xl py-1 cursor-pointer drop-shadow-xl hover:text-[#007dfe] dark:bg-transparent border-2"
+                  >
                     <FaGithub className="text-2xl"></FaGithub>
                     <h2 className="text-xl font-light uppercase">
                       Sign up with Github

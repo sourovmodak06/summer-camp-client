@@ -29,10 +29,24 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleCreateUser()
-      .then(() => {
-        toast.success("Successfully Login by Google");
-        navigate(from, { replace: true });
+    .then((result) => {
+      const loggedUser = result.user;
+      const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+      fetch("https://school-of-rock-server.vercel.app/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
       })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            toast.success("Successfully Login by Google");
+            navigate(from, { replace: true });
+          }
+        });
+    })
       .catch((error) => {
         toast.error(error.message);
       });
