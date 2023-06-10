@@ -53,7 +53,10 @@ const Register = () => {
     googleCreateUser()
       .then((result) => {
         const loggedUser = result.user;
-        const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
+        const saveUser = {
+          name: loggedUser.displayName,
+          email: loggedUser.email,
+        };
         fetch("https://school-of-rock-server.vercel.app/users", {
           method: "POST",
           headers: {
@@ -62,11 +65,9 @@ const Register = () => {
           body: JSON.stringify(saveUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              toast.success("Successfully Register");
-              navigate("/");
-            }
+          .then(() => {
+            toast.success("Successfully Register");
+            navigate("/");
           });
       })
       .catch((error) => {
@@ -75,10 +76,8 @@ const Register = () => {
   };
   const handleGithubSignUp = () => {
     githubCreateUser()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        toast.success("Successfully Login by Github");
+      .then(() => {
+        toast.success("Successfully Register by Github");
         navigate("/");
       })
       .catch((error) => {
