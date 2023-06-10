@@ -6,7 +6,9 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import Instructors from "../pages/instructors/Instructors";
 import Classes from "../pages/classes/Classes";
-import Dashboard from "../pages/dashboard/Dashboard";
+import Dashboard from "../layout/Dashboard";
+import StudentClasses from "../pages/dashboard/studentClasses/StudentClasses";
+import StudentHome from "../pages/dashboard/studentHome/studentHome";
 import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
@@ -35,12 +37,22 @@ import PrivateRoute from "./PrivateRoute";
           path: '/classes',
           element: <Classes></Classes>
         },
-        {
-          path: '/dashboard',
-          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-        }
       ]
     },
+    {
+      path: "dashboard",
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children: [
+        {
+          path: "studentHome",
+          element: <PrivateRoute><StudentHome></StudentHome></PrivateRoute>
+        },
+        {
+          path: "studentClasses",
+          element: <PrivateRoute><StudentClasses></StudentClasses></PrivateRoute>
+        }
+      ]
+    }
   ]);
 
 export default router;
