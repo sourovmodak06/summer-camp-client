@@ -22,3 +22,10 @@
   border-radius: 6px;
 }
 /* Custom Scrollbar End*/
+tr{
+  border-bottom: 1px solid #03203C;
+}
+th{
+  color: #03203C;
+  text-transform: uppercase;
+}
