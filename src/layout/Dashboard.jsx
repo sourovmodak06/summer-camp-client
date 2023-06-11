@@ -7,10 +7,11 @@ import useAdminSideNavSmall from "../hooks/useAdminSideNavSmall";
 import { FaBars } from "react-icons/fa";
 import useInstructorHomeSmall from "../hooks/useInstructorHomeSmall";
 import useInstructorHomeLarge from "../hooks/useInstructorHomeLarge";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   const isInstructor = false;
 
   // USER Dashboard Start

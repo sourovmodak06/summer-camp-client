@@ -4,10 +4,11 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { user } = useAuth();
+  const { user,loading } = useAuth();
 
   const { refetch, data: classItems = [] } = useQuery({
     queryKey: ["classCart", user?.email],
+    enabled: !loading && !user?.email,
     queryFn: async () => {
       const res = await axiosSecure(`/classCart?email=${user?.email}`);
       return res.data;
