@@ -15,7 +15,7 @@ const useAdminSideNavSmall = () => {
               <FaChalkboard></FaChalkboard>
             </h2>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/dashboard/allUsers"}>
             <h2 className="text-white text-2xl">
               <FaUsers></FaUsers>
             </h2>

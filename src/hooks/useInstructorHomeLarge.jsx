@@ -4,13 +4,13 @@ import ActiveLink from "../components/activeLink/ActiveLink";
 const useInstructorHomeLarge = () => {
     const instructorHomeLarge = (
         <>
-          <ActiveLink to={"/"}>
+          <ActiveLink to={"/dashboard/instructorHome"}>
             <h2 className="text-xl">Instructor Home</h2>
           </ActiveLink>
-          <ActiveLink to={"/"}>
+          <ActiveLink to={"/dashboard/addClass"}>
             <h2 className="text-xl">Add a Class</h2>
           </ActiveLink>
-          <ActiveLink to={"/"}>
+          <ActiveLink to={"/dashboard/myClass"}>
             <h2 className="text-xl">My Classes</h2>
           </ActiveLink>
     

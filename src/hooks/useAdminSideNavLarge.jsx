@@ -9,7 +9,7 @@ const useAdminSideNavLarge = () => {
       <ActiveLink to={"/"}>
         <h2 className="text-xl">Manage Classes</h2>
       </ActiveLink>
-      <ActiveLink to={"/"}>
+      <ActiveLink to={"/dashboard/allUsers"}>
         <h2 className="text-xl">Manage Users</h2>
       </ActiveLink>
 

@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const useInstructorHomeSmall = () => {
     const instructorHomeSmall = (
         <>
-          <Link to={"/"}>
+          <Link to={"/dashboard/instructorHome"}>
             <h2 className="text-white text-2xl">
               <FaHouseUser></FaHouseUser>
             </h2>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/dashboard/addClass"}>
             <h2 className="text-white text-2xl">
               <FaCalendarPlus></FaCalendarPlus>
             </h2>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/dashboard/myClass"}>
             <h2 className="text-white text-2xl">
             <SiGoogleclassroom></SiGoogleclassroom>
             </h2>
