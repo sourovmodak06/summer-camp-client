@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import AllUserCard from "../../../components/allUsersCard/AllUserCard";
+import { Bounce } from "react-awesome-reveal";
 
 const AllUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -9,9 +10,11 @@ const AllUsers = () => {
   return (
     <div>
       <div className="bg-[#ffffff4d] shadow-2xl drop-shadow-2xl rounded-2xl h-[90vh] p-6 overflow-hidden">
-        <h2 className="text-2xl uppercase text-white py-4">
-          total user : {users.length}
-        </h2>
+        <Bounce>
+          <h2 className="text-2xl uppercase text-white py-4">
+            total user : {users.length}
+          </h2>
+        </Bounce>
         <div className="w-full">
           <table className="w-full">
             <thead>

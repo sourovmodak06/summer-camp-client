@@ -21,7 +21,24 @@ const AllUserCard = ({ item, index, refetch }) => {
         }
       });
   };
-
+  const handleMakeInstructor = (item) => {
+    fetch(`https://school-of-rock-server.vercel.app/users/instructor/${item._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${name} is an Instructor Now`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  }
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -32,17 +49,30 @@ const AllUserCard = ({ item, index, refetch }) => {
         <h2>{email}</h2>
       </td>
       <td className="text-center">
-        <button className="m-2 p-1 text-white bg-[#f7cc2e9c]">
-          Instructor
-        </button>
+        {item.role === "instructor" ? (
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-4 h-4 bg-[#E8BD0D] rounded-full"></div>
+            <h2 className="text-[#F4BE2C]">instructor</h2>
+          </div>
+        ) : (
+          <button
+            onClick={() => handleMakeInstructor(item)}
+            className="m-2 p-1  text-white bg-[#f7cc2e9c]"
+          >
+            Instructor
+          </button>
+        )}
       </td>
       <td className="text-center">
         {item.role === "admin" ? (
-          "admin"
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-4 h-4 bg-[#02ff5a] rounded-full"></div>
+            <h2 className="text-[#034b1c]">admin</h2>
+          </div>
         ) : (
           <button
             onClick={() => handleMakeAdmin(item)}
-            className="m-2 p-1 text-white bg-[#22cb5da9]"
+            className="m-2 p-1 w-full text-white bg-[#22cb5da9]"
           >
             Admin
           </button>
