@@ -68,15 +68,15 @@ import HomeDashboard from "../components/homeDashboard/HomeDashboard";
         },
         {
           path: "instructorHome",
-          element: <SecureRoutes><InstructorHome></InstructorHome></SecureRoutes>
+          element: <InstructorHome></InstructorHome>
         },
         {
           path: "addClass",
-          element: <SecureRoutes><AddClass></AddClass></SecureRoutes>
+          element: <AddClass></AddClass>
         },
         {
           path: "myClass",
-          element: <SecureRoutes><MyClass></MyClass></SecureRoutes>
+          element: <MyClass></MyClass>
         },
         {
           path: "allUsers",

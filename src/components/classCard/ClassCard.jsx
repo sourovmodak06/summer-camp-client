@@ -2,10 +2,14 @@ import { Slide, Zoom } from "react-awesome-reveal";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import useClasses from "../../hooks/useClasses";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const ClassCard = ({ item }) => {
   const [, refetch] = useClasses();
   const { user } = useAuth();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const {
     _id,
     image,
@@ -108,7 +112,7 @@ const ClassCard = ({ item }) => {
               </h2>
             </Zoom>
           </div>
-          {user ? (
+          {user && !isAdmin && !isInstructor ? (
             <button onClick={() => handleAddClass(item)} className="bg-[#03203C] dark:bg-transparent border-2 w-3/4 m-auto block mt-5 p-1 text-white text-2xl">
               Enrolled Now
             </button>
