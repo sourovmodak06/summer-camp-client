@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import AllUserCard from "../../../components/allUsersCard/AllUserCard";
 import { Bounce } from "react-awesome-reveal";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("https://school-of-rock-server.vercel.app/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
   return (
     <div>

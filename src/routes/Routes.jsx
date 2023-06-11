@@ -15,6 +15,7 @@ import InstructorHome from "../pages/dashboard/instructorHome/InstructorHome";
 import AddClass from "../pages/dashboard/addClass/AddClass";
 import MyClass from "../pages/dashboard/myClass/MyClass";
 import AllUsers from "../pages/dashboard/allUsers/AllUsers";
+import SecureRoutes from "./SecureRoutes";
 
   const router = createBrowserRouter([
     {
@@ -62,19 +63,19 @@ import AllUsers from "../pages/dashboard/allUsers/AllUsers";
         },
         {
           path: "instructorHome",
-          element: <InstructorHome></InstructorHome>
+          element: <SecureRoutes><InstructorHome></InstructorHome></SecureRoutes>
         },
         {
           path: "addClass",
-          element: <AddClass></AddClass>
+          element: <SecureRoutes><AddClass></AddClass></SecureRoutes>
         },
         {
           path: "myClass",
-          element: <MyClass></MyClass>
+          element: <SecureRoutes><MyClass></MyClass></SecureRoutes>
         },
         {
           path: "allUsers",
-          element: <AllUsers></AllUsers>
+          element: <SecureRoutes><AllUsers></AllUsers></SecureRoutes>
         }
       ]
     }
