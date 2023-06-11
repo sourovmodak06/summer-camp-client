@@ -39,6 +39,33 @@ const AllUserCard = ({ item, index, refetch }) => {
         }
       });
   }
+  const handleDeleteAdmin = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://school-of-rock-server.vercel.app/users/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -79,7 +106,7 @@ const AllUserCard = ({ item, index, refetch }) => {
         )}
       </td>
       <td className="text-center">
-        <button className="text-2xl text-[#D31A50]">
+        <button onClick={() => handleDeleteAdmin(item)} className="text-2xl text-[#D31A50]">
           <FaTrash></FaTrash>
         </button>
       </td>

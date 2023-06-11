@@ -16,6 +16,7 @@ import AddClass from "../pages/dashboard/addClass/AddClass";
 import MyClass from "../pages/dashboard/myClass/MyClass";
 import AllUsers from "../pages/dashboard/allUsers/AllUsers";
 import SecureRoutes from "./SecureRoutes";
+import HomeDashboard from "../components/homeDashboard/HomeDashboard";
 
   const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ import SecureRoutes from "./SecureRoutes";
       path: "dashboard",
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        {
+          path: 'homeDashboard',
+          element: <HomeDashboard></HomeDashboard>
+        },
         {
           path: "studentHome",
           element: <PrivateRoute><StudentHome></StudentHome></PrivateRoute>
