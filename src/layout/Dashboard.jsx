@@ -8,11 +8,12 @@ import { FaBars } from "react-icons/fa";
 import useInstructorHomeSmall from "../hooks/useInstructorHomeSmall";
 import useInstructorHomeLarge from "../hooks/useInstructorHomeLarge";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const [isAdmin] = useAdmin();
-  const isInstructor = false;
+  const [isInstructor] = useInstructor();
 
   // USER Dashboard Start
   const userHomeSmall = useUserSideNavSmall();
