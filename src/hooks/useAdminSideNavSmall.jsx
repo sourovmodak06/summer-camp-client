@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const useAdminSideNavSmall = () => {
     const adminHomeSmall = (
         <>
-          <Link to={"/"}>
+          <Link to={"/dashboard/adminHome"}>
             <h2 className="text-white text-2xl">
               <FaHouseUser></FaHouseUser>
             </h2>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/dashboard/manageClassItem"}>
             <h2 className="text-white text-2xl">
               <FaChalkboard></FaChalkboard>
             </h2>

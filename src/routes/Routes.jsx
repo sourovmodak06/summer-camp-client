@@ -18,6 +18,9 @@ import AllUsers from "../pages/dashboard/allUsers/AllUsers";
 import SecureRoutes from "./SecureRoutes";
 import HomeDashboard from "../components/homeDashboard/HomeDashboard";
 import Pay from "../pages/dashboard/pay/Pay";
+import AdminHome from "../pages/dashboard/adminHome/AdminHome";
+import ManageClassItem from "../pages/dashboard/manageClassItem/ManageClassItem";
+import UpdateClassItem from "../pages/dashboard/updateClassItem/UpdateClassItem";
 
   const router = createBrowserRouter([
     {
@@ -68,12 +71,26 @@ import Pay from "../pages/dashboard/pay/Pay";
           element: <PrivateRoute><Payments></Payments></PrivateRoute>
         },
         {
-          path: "pay",
-          element: <Pay></Pay>
+          path: "pay/:id",
+          element: <PrivateRoute><Pay></Pay></PrivateRoute>,
+          loader: ({params}) => fetch(`https://school-of-rock-server.vercel.app/classes/${params.id}`)
         },
         {
           path: "instructorHome",
           element: <InstructorHome></InstructorHome>
+        },
+        {
+          path: "adminHome",
+          element: <AdminHome></AdminHome>
+        },
+        {
+          path: "manageClassItem",
+          element: <ManageClassItem></ManageClassItem>
+        },
+        {
+          path: "updateClassItem/:id",
+          element: <UpdateClassItem></UpdateClassItem>,
+          loader: ({params}) => fetch(`https://school-of-rock-server.vercel.app/classes/${params.id}`)
         },
         {
           path: "addClass",

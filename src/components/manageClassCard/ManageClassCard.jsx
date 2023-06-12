@@ -1,10 +1,11 @@
-import { FaCcMastercard, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useClasses from "../../hooks/useClasses";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const StudentClassCard = ({ item, index }) => {
+
+const ManageClassCard = ({ item, index }) => {
   const [, refetch] = useClasses();
-  const { image, name, instructorName, price } = item;
+  const { _id, image, name, instructorName, price } = item;
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -17,7 +18,7 @@ const StudentClassCard = ({ item, index }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://school-of-rock-server.vercel.app/classCart/${item._id}`,
+          `https://school-of-rock-server.vercel.app/myClasses/${item._id}`,
           {
             method: "DELETE",
           }
@@ -32,9 +33,6 @@ const StudentClassCard = ({ item, index }) => {
       }
     });
   };
-  const handlePay = (item) =>{
-    console.log("ID :", item._id);
-  }
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -59,10 +57,10 @@ const StudentClassCard = ({ item, index }) => {
           <FaTrash></FaTrash>
         </button>
       </td>
-      <td onClick={() => handlePay(item)} className="text-center">
-        <Link to={`/dashboard/pay/${item._id}`}>
-          <button className=" text-[#03203C] text-2xl">
-            <FaCcMastercard></FaCcMastercard>
+      <td className="text-center">
+        <Link to={`/dashboard/updateClassItem/${_id}`}>
+          <button className="text-2xl text-[#d3d01a]">
+            <FaEdit></FaEdit>
           </button>
         </Link>
       </td>
@@ -70,4 +68,4 @@ const StudentClassCard = ({ item, index }) => {
   );
 };
 
-export default StudentClassCard;
+export default ManageClassCard;

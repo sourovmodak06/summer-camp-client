@@ -3,10 +3,10 @@ import ActiveLink from "../components/activeLink/ActiveLink";
 const useAdminSideNavLarge = () => {
   const adminHomeLarge = (
     <>
-      <ActiveLink to={"/"}>
+      <ActiveLink to={"/dashboard/adminHome"}>
         <h2 className="text-xl">Admin Home</h2>
       </ActiveLink>
-      <ActiveLink to={"/"}>
+      <ActiveLink to={"/dashboard/manageClassItem"}>
         <h2 className="text-xl">Manage Classes</h2>
       </ActiveLink>
       <ActiveLink to={"/dashboard/allUsers"}>
