@@ -10,7 +10,7 @@ import Dashboard from "../layout/Dashboard";
 import StudentClasses from "../pages/dashboard/studentClasses/StudentClasses";
 import StudentHome from "../pages/dashboard/studentHome/studentHome";
 import PrivateRoute from "./PrivateRoute";
-import Payments from "../pages/dashboard/payments/Payments";
+
 import InstructorHome from "../pages/dashboard/instructorHome/InstructorHome";
 import AddClass from "../pages/dashboard/addClass/AddClass";
 import MyClass from "../pages/dashboard/myClass/MyClass";
@@ -55,6 +55,10 @@ import UpdateClassItem from "../pages/dashboard/updateClassItem/UpdateClassItem"
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
+          path: "pay",
+          element: <PrivateRoute><Pay></Pay></PrivateRoute>,
+        },
+        {
           path: 'homeDashboard',
           element: <HomeDashboard></HomeDashboard>
         },
@@ -65,15 +69,6 @@ import UpdateClassItem from "../pages/dashboard/updateClassItem/UpdateClassItem"
         {
           path: "studentClasses",
           element: <PrivateRoute><StudentClasses></StudentClasses></PrivateRoute>
-        },
-        {
-          path: "payments",
-          element: <PrivateRoute><Payments></Payments></PrivateRoute>
-        },
-        {
-          path: "pay/:id",
-          element: <PrivateRoute><Pay></Pay></PrivateRoute>,
-          loader: ({params}) => fetch(`https://school-of-rock-server.vercel.app/classes/${params.id}`)
         },
         {
           path: "instructorHome",

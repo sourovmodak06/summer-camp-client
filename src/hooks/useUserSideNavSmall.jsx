@@ -2,8 +2,7 @@ import {
   FaClipboardList,
   FaHome,
   FaHouseUser,
-  FaIdCard,
-  FaRegMoneyBillAlt,
+
 } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -21,16 +20,7 @@ const useUserSideNavSmall = () => {
           <FaClipboardList></FaClipboardList>
         </h2>
       </Link>
-      <Link to={"/"}>
-        <h2 className="text-white text-2xl">
-          <FaIdCard></FaIdCard>
-        </h2>
-      </Link>
-      <Link to={"/"}>
-        <h2 className="text-white text-2xl">
-          <FaRegMoneyBillAlt></FaRegMoneyBillAlt>
-        </h2>
-      </Link>
+
 
       <div className="w-full h-[2px] bg-white"></div>
       <Link to={"/"}>

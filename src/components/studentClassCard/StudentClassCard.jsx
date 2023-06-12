@@ -1,7 +1,6 @@
-import { FaCcMastercard, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useClasses from "../../hooks/useClasses";
-import { Link } from "react-router-dom";
 const StudentClassCard = ({ item, index }) => {
   const [, refetch] = useClasses();
   const { image, name, instructorName, price } = item;
@@ -32,9 +31,7 @@ const StudentClassCard = ({ item, index }) => {
       }
     });
   };
-  const handlePay = (item) =>{
-    console.log("ID :", item._id);
-  }
+  
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -58,13 +55,6 @@ const StudentClassCard = ({ item, index }) => {
         <button className="text-2xl text-[#D31A50]">
           <FaTrash></FaTrash>
         </button>
-      </td>
-      <td onClick={() => handlePay(item)} className="text-center">
-        <Link to={`/dashboard/pay/${item._id}`}>
-          <button className=" text-[#03203C] text-2xl">
-            <FaCcMastercard></FaCcMastercard>
-          </button>
-        </Link>
       </td>
     </tr>
   );

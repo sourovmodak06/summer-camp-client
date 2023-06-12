@@ -9,12 +9,6 @@ const useUserSideNavLarge = () => {
       <ActiveLink to={"/dashboard/studentClasses"}>
         <h2 className="text-xl">Selected Classes</h2>
       </ActiveLink>
-      <ActiveLink to={"/"}>
-        <h2 className="text-xl">Enrolled</h2>
-      </ActiveLink>
-      <ActiveLink to={"/dashboard/payments"}>
-        <h2 className="text-xl">Payments</h2>
-      </ActiveLink>
 
       <div className="w-full h-[2px] bg-white"></div>
       <ActiveLink to={"/"}>

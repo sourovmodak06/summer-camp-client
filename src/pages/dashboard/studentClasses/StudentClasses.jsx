@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import StudentClassCard from "../../../components/studentClassCard/StudentClassCard";
 import useClasses from "../../../hooks/useClasses";
 import useTitle from "../../../hooks/useTitle";
@@ -17,6 +18,13 @@ const StudentClasses = () => {
           <h2 className="text-2xl text-white">Total Price : ${total}</h2>
         </div>
         <div className="w-full">
+          <div className="flex justify-end">
+            <Link to={"/dashboard/pay"}>
+              <div className="bg-yellow-500 text-white p-2 my-4 rounded-xl">
+                PAY ALL
+              </div>
+            </Link>
+          </div>
           <table className="w-full">
             <thead>
               <tr>
@@ -25,14 +33,16 @@ const StudentClasses = () => {
                 <th>Name Of Class</th>
                 <th>Instructor Name</th>
                 <th>Price</th>
-                <th>Already Enrolled</th>
                 <th>Action</th>
-                <th>Pay</th>
               </tr>
             </thead>
             <tbody className="">
               {classItems.map((item, index) => (
-                <StudentClassCard key={item._id} item={item} index={index}></StudentClassCard>
+                <StudentClassCard
+                  key={item._id}
+                  item={item}
+                  index={index}
+                ></StudentClassCard>
               ))}
             </tbody>
           </table>
