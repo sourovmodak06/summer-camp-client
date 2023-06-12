@@ -17,7 +17,6 @@ const ClassCard = ({ item }) => {
     instructorName,
     availableSeats,
     price,
-    enrolledStudent,
   } = item;
   const handleAddClass = (item) => {
     console.log(item);
@@ -29,7 +28,6 @@ const ClassCard = ({ item }) => {
         instructorName,
         availableSeats,
         price,
-        enrolledStudent,
         email: user.email
       }
       fetch("https://school-of-rock-server.vercel.app/classCart",{
@@ -99,18 +97,6 @@ const ClassCard = ({ item }) => {
                 <span className="text-gray-500 dark:text-white">/month</span>
               </h2>
             </Slide>
-          </div>
-          <div className="flex gap-3 m-1">
-            <Slide>
-              <h2 className="text-xl font-bold text-transparent  bg-clip-text bg-gradient-to-r from-[#FF4331] to-[#D31A50]">
-                Enrolled Student:
-              </h2>
-            </Slide>
-            <Zoom>
-              <h2 className="text-xl font-bold dark:text-white">
-                {enrolledStudent}
-              </h2>
-            </Zoom>
           </div>
           {user && !isAdmin && !isInstructor ? (
             <button onClick={() => handleAddClass(item)} className="bg-[#03203C] dark:bg-transparent border-2 w-3/4 m-auto block mt-5 p-1 text-white text-2xl">

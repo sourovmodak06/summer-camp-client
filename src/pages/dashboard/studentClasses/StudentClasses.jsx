@@ -5,7 +5,7 @@ import useTitle from "../../../hooks/useTitle";
 const StudentClasses = () => {
   useTitle("Dashboard | Selected");
   const [classItems] = useClasses();
-  console.log("class", classItems);
+  // console.log("class", classItems);
   const total = classItems.reduce((sum, item) => item.price + sum, 0);
   return (
     <div>

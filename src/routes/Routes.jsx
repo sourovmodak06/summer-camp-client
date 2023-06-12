@@ -17,6 +17,7 @@ import MyClass from "../pages/dashboard/myClass/MyClass";
 import AllUsers from "../pages/dashboard/allUsers/AllUsers";
 import SecureRoutes from "./SecureRoutes";
 import HomeDashboard from "../components/homeDashboard/HomeDashboard";
+import Pay from "../pages/dashboard/pay/Pay";
 
   const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ import HomeDashboard from "../components/homeDashboard/HomeDashboard";
         {
           path: "payments",
           element: <PrivateRoute><Payments></Payments></PrivateRoute>
+        },
+        {
+          path: "pay",
+          element: <Pay></Pay>
         },
         {
           path: "instructorHome",
